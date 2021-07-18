@@ -7,8 +7,8 @@ import { SocketService } from 'src/app/_services/socket.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
-  public title = "Claudia Reinert";
-  public subtitle = "Neue Schulleiterin am AG";
+  public title = "";
+  public subtitle = "";
   constructor(private socketService: SocketService) { }
 
   public show() {

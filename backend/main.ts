@@ -1,7 +1,7 @@
 // This is the electron startup script
-const { app, BrowserWindow, Tray, Menu, dialog } = require('electron');
-const { autoUpdater } = require("electron-updater");
-const path = require("path");
+import { app, BrowserWindow, Tray, Menu, dialog } from 'electron';
+import { autoUpdater } from "electron-updater";
+import * as path from "path";
 
 let mainWindow;
 let trayIcon;
@@ -23,7 +23,7 @@ function createWindow() {
         mainWindow.show();
     });
     mainWindow.on('close', function(event) {
-        if (!app.isQuiting) {
+        if (!(app as any).isQuiting) {
             event.preventDefault();
             mainWindow.hide();
         }
@@ -34,7 +34,7 @@ function createWindow() {
 }
 
 function createTrayIcon() {
-    trayIcon = new Tray(app.isPackaged ? path.join(process.resourcesPath, "build/trayicon.png") : "build/trayicon.png");
+    trayIcon = new Tray(app.isPackaged ? path.join((process as any).resourcesPath, "build/trayicon.png") : "build/trayicon.png");
     trayIcon.setContextMenu(
         Menu.buildFromTemplate([
             {
@@ -49,7 +49,7 @@ function createTrayIcon() {
             {
                 label: 'Quit',
                 click: () => {
-                    app.isQuiting = true;
+                    (app as any).isQuiting = true;
                     app.quit();
                 },
             },
