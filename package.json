@@ -1,0 +1,39 @@
+{
+	"name": "aggraphics",
+	"version": "0.1.0",
+	"description": "A customizable graphics playout system.",
+	"license": "MIT",
+	"author": "Hannes Rüger",
+	"bin": {
+		"aggraphics": "bin/aggraphics"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"bin",
+		"ui-dist",
+		"dist"
+	],
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"socket.io": "^4.1.3"
+	},
+	"main": "dist/main.js",
+	"scripts": {
+		"start": "ts-node-dev backend/index.ts",
+		"build": "tsc",
+		"prepare": "cd UI && npm i && npm run build",
+		"desktop": "electron .",
+		"build-desktop": "electron-builder"
+	},
+	"devDependencies": {
+		"@types/socket.io": "^3.0.2",
+		"@types/body-parser": "^1.19.1",
+		"@types/express": "^4.17.13",
+		"electron": "^12.0.9",
+		"electron-builder": "^22.10.5"
+	}
+}

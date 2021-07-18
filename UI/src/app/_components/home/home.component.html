@@ -1,0 +1,20 @@
+<div class="container pt-5">
+    <div class="row text-center">
+        <h1 class="display-4">Welcome to AGGraphics</h1>
+    </div>
+    <div class="row mt-5 row-cols-1 row-cols-md-2 g-5 text-center">
+        <div class="col">
+            <div class="rounded bg-light p-3">
+                <h3><i class="fas fa-play"></i> Online Playout Clients</h3>
+                <h1>{{socketService.connectedClients}}</h1>
+            </div>
+        </div>
+        <div class="col">
+            <div class="rounded bg-light p-3">
+                <h3 class="mb-5"><i class="fas fa-book"></i> How to get started</h3>
+                <p>In OBS, create a new BrowserSource and input the following URL:</p>
+                <a href="http://127.0.0.1:16849/#/live">http://127.0.0.1:16849/#/live</a>
+            </div>
+        </div>
+    </div>
+</div>

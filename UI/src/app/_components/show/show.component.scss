@@ -1,0 +1,143 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+html,
+body {
+    background-color: transparent;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+$blue: #4c9fcf;
+$ease-out: cubic-bezier(.19, .76, .32, 1);
+$duration: 8s;
+$height: 10rem;
+
+main {
+    font-family: Open Sans;
+    line-height: 1;
+    position: absolute;
+    bottom: 5rem;
+    left: 5rem;
+    right: 5rem;
+    width: calc(1920px - 10rem);
+}
+
+.animation {
+    height: $height;
+    position: relative;
+}
+
+.mask {
+    overflow: hidden;
+    position: relative;
+}
+
+
+@keyframes animation-1-slash {
+    0% {
+        opacity: 0;
+        transform: translate3d(6em, 0, 0);
+    }
+    5% {
+        opacity: 0;
+        transform: translate3d(6em, 0, 0);
+    }
+    22% {
+        opacity: 1;
+    }
+    25% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes animation-1-background-box {
+    0% {
+        width: 0px;
+        opacity: 0;
+    }
+    5% {
+        width: 0px;
+        opacity: 100;
+    }
+    22% {
+        opacity: 1;
+    }
+    25% {
+        width: 100%;
+    }
+}
+
+@keyframes animation-1-text-1 {
+    0% {
+        left: -100%;
+    }
+    15% {
+        left: -100%;
+    }
+    32% {
+        left: 0;
+    }
+}
+
+@keyframes animation-1-text-2 {
+    0% {
+        left: -100%;
+    }
+    15% {
+        left: -100%;
+    }
+    37% {
+        left: 0;
+    }
+}
+
+.animation {
+    color: #0D017D;
+    div {
+        position: absolute;
+    }
+    &>div.slash, &>div.slash img {
+        height: 80%;
+        width: auto;
+        top: 15%;
+        left: 2rem;
+        animation: $duration $ease-out 2 alternate both animation-1-slash;
+    }
+    &>div.background-box {
+        border-radius: 1rem;
+        position: absolute;
+        display: block;
+        height: $height;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        animation: $duration $ease-out 2 alternate both animation-1-background-box;
+    }
+    &>div.title,
+    &>div.subtitle {
+        font-size: 4em;
+        height: 1em;
+        width: 1920px;
+        left: 10rem;
+        div {
+            animation: $duration $ease-out 2 alternate both;
+        }
+    }
+    div.title {
+        font-weight: 700;
+        top: 1rem;
+        text-transform: uppercase;
+        div {
+            animation-name: animation-1-text-1;
+        }
+    }
+    div.subtitle {
+        top: 2em;
+        font-size: 2.4em;
+        div {
+            animation-name: animation-1-text-2;
+        }
+    }
+}
