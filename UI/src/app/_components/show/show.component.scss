@@ -12,7 +12,7 @@ body {
 
 $blue: #4c9fcf;
 $ease-out: cubic-bezier(.19, .76, .32, 1);
-$duration: 8s;
+$duration: 6s;
 $height: 10rem;
 
 main {
@@ -118,7 +118,7 @@ main {
     &>div.title,
     &>div.subtitle {
         font-size: 4em;
-        height: 1em;
+        height: 2em;
         width: 1920px;
         left: 10rem;
         div {
