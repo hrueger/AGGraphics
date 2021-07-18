@@ -1,4 +1,3 @@
-import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import * as express from "express";
 import * as path from "path";
@@ -11,7 +10,16 @@ const httpServer = http.createServer(app);
 const io = new SocketIoServer(httpServer);
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.post("/show/:template", (req, res) => {
+    console.log(req.body)
+    if (req.body.data) {
+        io.emit("show", req.params.template, req.body.data);
+        res.send({ success: true });
+        return;
+    }
+    res.status(400).send({ error: "Missing Data" });
+});
 app.use("/", express.static(path.join(__dirname, "../ui-dist")));
 app.use("*", express.static(path.join(__dirname, "../ui-dist/index.html")));
 
