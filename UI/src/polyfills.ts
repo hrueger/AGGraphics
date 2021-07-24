@@ -63,3 +63,14 @@ import 'zone.js';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+(window as any).global = window;
+(window as any).process = {
+    env: { DEBUG: undefined },
+    nextTick: function() {
+    return null;
+    }
+};
+(window as any).process.browser = true;
+(window as any).process.version = '';
+(window as any).process.versions = { node: false };
+(window as any).global.Buffer = global.Buffer || require('buffer').Buffer;

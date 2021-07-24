@@ -20,6 +20,18 @@
             
             <button (click)="show()" class="ms-auto btn btn-outline-primary">Show</button>
         </div>
+            
+        <div class="card-body">
+            <h5 class="card-title mb-4">Countdown-Visualizer</h5>
+            <div class="row mb-3">
+                <label for="finishTimeStamp" class="col-sm-2 col-form-label">Finish timestamp</label>
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="countdownFinishTime" class="form-control" id="finishTimeStamp">
+                </div>
+            </div>
+            <button (click)="showCountdown()" class="ms-auto btn btn-outline-primary">Show</button>
+        </div>
+            
     </div>
     
 </div>

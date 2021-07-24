@@ -1,6 +1,7 @@
-import { Component, NgZone, ViewEncapsulation } from '@angular/core';
+import { Component, NgZone, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocketService } from 'src/app/_services/socket.service';
+import { CountdownComponent } from '../countdown/countdown.component';
 
 @Component({
   selector: 'app-show',
@@ -15,6 +16,11 @@ export class ShowComponent {
   public title = "";
   public subtitle = "";
   public playAnimation = false;
+
+  @ViewChild(CountdownComponent)
+  public countdownComponent!: CountdownComponent;
+  public countdownFinishTime = 0;
+  public countdownAnimationActive = false;
   
   constructor(
     private router: Router,
@@ -29,6 +35,10 @@ export class ShowComponent {
         this.subtitle = data.subtitle;
         this.startAnimation();
       }
+      else if (template == "countdown") {
+        this.countdownFinishTime = data.countdownFinishTime;
+        this.startCountdown();
+      }
     });
   }
 
@@ -39,6 +49,21 @@ export class ShowComponent {
         this.playAnimation = true;
       });
     }, 10);
+  }
+
+  startCountdown() {
+    this.countdownAnimationActive = false;
+
+    setTimeout(() => {
+      this.zone.run(() => {
+        this.countdownAnimationActive = true;
+      });
+    }, 10);
+    setTimeout(() => {
+      this.zone.run(() => {
+        this.countdownComponent.countdownFinishTime = this.countdownFinishTime;
+      });
+    }, 50);
   }
 }
 

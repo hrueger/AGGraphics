@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { ShowComponent } from './_components/show/show.component';
 import { AdminComponent } from './_components/admin/admin.component';
 import { FormsModule } from '@angular/forms';
+import { CountdownComponent } from './_components/countdown/countdown.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     ShowComponent,
     AboutComponent,
     AdminComponent,
+    CountdownComponent,
   ],
   imports: [
     BrowserModule,
