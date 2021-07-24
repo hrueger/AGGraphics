@@ -32,4 +32,12 @@ export class AdminComponent {
       },
     });
   }
+  public stopCountdown() {
+    this.socketService.socket.emit("show", {
+      template: "countdown",
+      data: {
+        countdownFinishTime: 0,
+      },
+    });
+  }
 }

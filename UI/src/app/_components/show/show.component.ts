@@ -37,7 +37,10 @@ export class ShowComponent {
       }
       else if (template == "countdown") {
         this.countdownFinishTime = data.countdownFinishTime;
-        this.startCountdown();
+        if (data.countdownFinishTime == 0)
+          this.countdownAnimationActive = false;
+        else
+          this.startCountdown();
       }
     });
   }
