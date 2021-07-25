@@ -9,6 +9,9 @@ import { SocketService } from 'src/app/_services/socket.service';
 export class AdminComponent {
   public title = "";
   public subtitle = "";
+
+  public countdownFinishTime = (new Date(Date.now())).toString();
+
   constructor(private socketService: SocketService) { }
 
   public show() {
@@ -17,6 +20,23 @@ export class AdminComponent {
       data: {
         title: this.title,
         subtitle: this.subtitle,
+      },
+    });
+  }
+  
+  public showCountdown() {
+    this.socketService.socket.emit("show", {
+      template: "countdown",
+      data: {
+        countdownFinishTime: (new Date(this.countdownFinishTime)).getTime(),
+      },
+    });
+  }
+  public stopCountdown() {
+    this.socketService.socket.emit("show", {
+      template: "countdown",
+      data: {
+        countdownFinishTime: 0,
       },
     });
   }
