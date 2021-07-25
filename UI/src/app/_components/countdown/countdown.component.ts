@@ -13,11 +13,9 @@ declare var particlesJS: any;
   styleUrls: ['./countdown.component.scss']
 })
 export class CountdownComponent implements OnInit {
-
-  readonly updateFreq = 25; // Hz
-  readonly startDate = new Date(Date.now() + 15 * 60 * 1000); // Now + 15 Minutes
-  volume = 1.0; // Bar height multiplier
-  private barInterval?: number;
+  private readonly startDate = new Date(Date.now() + 15 * 60 * 1000); // Now + 15 Minutes
+  private readonly volume = 1.0; // Bar height multiplier
+  private updateBar = true;
 
   private countdownInterval?: number;
   public countdownText = "";
@@ -66,7 +64,7 @@ export class CountdownComponent implements OnInit {
     fromEvent(window, 'resize').pipe(debounce(() => timer(100)))
         .subscribe(() => setCanvasSize());
 
-    this.barInterval = setInterval(() => { // Visualizer update. Called regularly
+    const updateBar = () => {
       analyser.getFloatFrequencyData(dataArray);
 
       this.clearCanvas(cvContext);
@@ -83,7 +81,11 @@ export class CountdownComponent implements OnInit {
         cvContext.fillStyle = "#2A88CE";
         cvContext.fillRect((i+1) * lineWidth - separationWidth - secondaryColorWidth, canvas.height - lineHeight, secondaryColorWidth, lineHeight);
       });
-    }, 1000 / this.updateFreq) as any as number;
+      if (this.updateBar) {
+        window.requestAnimationFrame(updateBar);
+      }
+    };
+    updateBar();
 
     this.countdownInterval = setInterval(() => {
       this.zone.run(() => this.setCountDownText());
@@ -109,7 +111,7 @@ export class CountdownComponent implements OnInit {
   
   // Cleanup
   public ngOnDestroy() {
-    clearTimeout(this.barInterval);
+    this.updateBar = false;
     clearTimeout(this.countdownInterval);
   }
 
