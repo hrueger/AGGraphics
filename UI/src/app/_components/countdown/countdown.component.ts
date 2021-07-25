@@ -78,9 +78,9 @@ export class CountdownComponent implements OnInit {
         const separationWidth = lineWidth / 10;
         const lineHeight = this.volume * (Math.exp(val/35)) * canvas.height;
 
-        cvContext.fillStyle = "#0d017d";
+        cvContext.fillStyle = "#013CB0";
         cvContext.fillRect(i * lineWidth + separationWidth, canvas.height - lineHeight, lineWidth - 2*separationWidth, lineHeight);
-        cvContext.fillStyle = "#67658c";
+        cvContext.fillStyle = "#2A88CE";
         cvContext.fillRect((i+1) * lineWidth - separationWidth - secondaryColorWidth, canvas.height - lineHeight, secondaryColorWidth, lineHeight);
       });
     }, 1000 / this.updateFreq) as any as number;
