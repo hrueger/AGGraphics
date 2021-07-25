@@ -32,6 +32,18 @@
             <button (click)="showCountdown()" class="ms-auto btn btn-outline-primary">Show</button>
             <button (click)="stopCountdown()" class="ms-auto btn btn-outline-danger">Stop</button>
         </div>
+
+        <div class="card-body">
+            <h5 class="card-title mb-4">Transition</h5>
+            <div class="row mb-3">
+                <label for="transitionText" class="col-sm-2 col-form-label">Transition text</label>
+                <div class="col-sm-10">
+                    <input type="text" [(ngModel)]="transitionText" class="form-control" id="transitionText">
+                </div>
+            </div>
+            
+            <button (click)="showTransition()" class="ms-auto btn btn-outline-primary">Show</button>
+        </div>
             
     </div>
     

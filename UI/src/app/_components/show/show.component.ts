@@ -21,6 +21,9 @@ export class ShowComponent {
   public countdownComponent!: CountdownComponent;
   public countdownFinishTime = 0;
   public countdownAnimationActive = false;
+
+  public transitionText = "";
+  public transitionAnimationActive = false;
   
   constructor(
     private router: Router,
@@ -41,6 +44,11 @@ export class ShowComponent {
           this.countdownAnimationActive = false;
         else
           this.startCountdown();
+      }
+      else if (template == "transition") {
+        this.transitionText = data.text;
+        console.log("transition: ", this.transitionText);
+        this.startTransition();
       }
     });
   }
@@ -67,6 +75,15 @@ export class ShowComponent {
         this.countdownComponent.countdownFinishTime = this.countdownFinishTime;
       });
     }, 50);
+  }
+
+  startTransition() {
+    this.transitionAnimationActive = false;
+    setTimeout(() => {
+      this.zone.run(() => {
+        this.transitionAnimationActive = true;
+      });
+    }, 10);
   }
 }
 
