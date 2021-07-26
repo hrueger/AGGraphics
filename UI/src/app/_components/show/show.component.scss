@@ -141,3 +141,73 @@ main {
         }
     }
 }
+
+
+
+
+$transitionDuration: 5s;
+$transitionTextColor: #0D017D;
+$transitionTextSize: 6em;
+$transitionBarColor: white;
+
+
+.transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.transition > .transition-leftBlock {
+    position: fixed;
+	background-color: $transitionBarColor;
+    left:-100%;
+    top:0%;
+    width: 100%;
+    height: 50%;
+    animation-name: animation-leftTransitionBlock;
+    animation-duration: $transitionDuration;
+}
+.transition > .transition-rightBlock {
+    position: fixed;
+    background-color: $transitionBarColor;
+    right:-100%;
+    bottom:0%;
+    width: 100%;
+    height: 50%;
+    animation-name: animation-rightTransitionBlock;
+    animation-duration: $transitionDuration;
+}
+
+@keyframes animation-leftTransitionBlock {
+      0%      {left:-100%;}
+     25%, 75% {left:   0%;}
+    100%      {left: 100%;}
+}
+@keyframes animation-rightTransitionBlock {
+      0%      {right:-100%;}
+     25%, 75% {right:   0%;}
+    100%      {right: 100%;}
+}
+
+
+.transition > .transition-text {
+    position: fixed;
+    color: $transitionTextColor;
+    font-size: $transitionTextSize;
+    text-align: center;
+    font-weight: 700;
+    margin-top:  50vh;
+    margin-left: 50%;
+    transform: translate(-50%, -50%);
+	animation-name: animation-transitionText;
+    animation-duration: $transitionDuration;
+    animation-fill-mode: both;
+}
+
+@keyframes animation-transitionText {
+     0%,  30% {opacity: 0;}
+    35%,  65% {opacity: 1;}
+    70%, 100% {opacity: 0;}
+}

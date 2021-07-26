@@ -12,6 +12,8 @@ export class AdminComponent {
 
   public countdownFinishTime = (new Date(Date.now())).toString();
 
+  public transitionText = "";
+
   constructor(private socketService: SocketService) { }
 
   public show() {
@@ -37,6 +39,15 @@ export class AdminComponent {
       template: "countdown",
       data: {
         countdownFinishTime: 0,
+      },
+    });
+  }
+
+  public showTransition() {
+    this.socketService.socket.emit("show", {
+      template: "transition",
+      data: {
+        text: this.transitionText,
       },
     });
   }

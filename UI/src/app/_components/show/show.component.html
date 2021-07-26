@@ -13,4 +13,9 @@
     <div class="countdown" *ngIf="countdownAnimationActive">
         <app-countdown></app-countdown>
    </div>
+    <div class="transition" *ngIf="transitionAnimationActive">
+        <div class="transition-rightBlock"></div>
+        <div class="transition-leftBlock"></div>
+        <div class="transition-text">{{transitionText}}</div>
+   </div>
 </main>
