@@ -14,7 +14,7 @@ declare var particlesJS: any;
 })
 export class CountdownComponent implements OnInit {
   private readonly startDate = new Date(Date.now() + 15 * 60 * 1000); // Now + 15 Minutes
-  private readonly volume = 1.0; // Bar height multiplier
+  private readonly volume = 0.8; // Bar height multiplier
   private updateBar = true;
 
   private countdownInterval?: number;

@@ -24,6 +24,8 @@ export class ShowComponent {
 
   public transitionText = "";
   public transitionAnimationActive = false;
+
+  private jingleAudio = new Audio("assets/Jingle AGM Stinger 8.wav");
   
   constructor(
     private router: Router,
@@ -31,6 +33,9 @@ export class ShowComponent {
     public route: ActivatedRoute,
     public socketService: SocketService,
   ) {
+
+    this.jingleAudio.volume = 0.5;
+
     this.socketService.socket.emit('registerConsumer');
     this.socketService.onAnimation.subscribe(({ template, data }) => {
       if (template == "lower-third-1") {
@@ -78,12 +83,20 @@ export class ShowComponent {
   }
 
   startTransition() {
+    this.jingleAudio.pause();
+    this.jingleAudio.currentTime = 0;
+
     this.transitionAnimationActive = false;
     setTimeout(() => {
       this.zone.run(() => {
         this.transitionAnimationActive = true;
       });
     }, 10);
+    setTimeout(() => {
+      this.zone.run(() => {
+        this.jingleAudio.play();
+      });
+    }, 1000);
   }
 }
 
