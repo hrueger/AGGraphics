@@ -35,6 +35,16 @@ main {
     position: relative;
 }
 
+.zwischentext {
+    position: fixed;
+    width: 50%;
+    left: 5%;
+    top: 70%;
+    .zwischentext-text {
+        color: #fff;
+        font-size: 3rem;
+    }
+}
 
 @keyframes animation-1-slash {
     0% {

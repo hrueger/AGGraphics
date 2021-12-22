@@ -22,6 +22,18 @@
         </div>
             
         <div class="card-body">
+            <h5 class="card-title mb-4">Zwischentext</h5>
+            <div class="row mb-3">
+                <label for="zwischentext" class="col-sm-2 col-form-label">Text</label>
+                <div class="col-sm-10">
+                    <textarea type="text" [(ngModel)]="zwischentext" class="form-control" id="zwischentext"></textarea>
+                </div>
+            </div>
+            <button (click)="showZwischentext()" class="ms-auto btn btn-outline-primary">Show</button>
+            <button (click)="stopZwischentext()" class="ms-auto btn btn-outline-danger">Stop</button>
+        </div>
+            
+        <div class="card-body">
             <h5 class="card-title mb-4">Countdown-Visualizer</h5>
             <div class="row mb-3">
                 <label for="finishTimeStamp" class="col-sm-2 col-form-label">Finish timestamp</label>

@@ -25,6 +25,8 @@ export class ShowComponent {
   public transitionText = "";
   public transitionAnimationActive = false;
 
+  public zwischentext = "";
+
   private jingleAudio = new Audio("assets/Jingle AGM Stinger 8.wav");
   
   constructor(
@@ -38,6 +40,7 @@ export class ShowComponent {
 
     this.socketService.socket.emit('registerConsumer');
     this.socketService.onAnimation.subscribe(({ template, data }) => {
+      console.log(template, data);
       if (template == "lower-third-1") {
         this.title = data.title;
         this.subtitle = data.subtitle;
@@ -54,6 +57,10 @@ export class ShowComponent {
         this.transitionText = data.text;
         console.log("transition: ", this.transitionText);
         this.startTransition();
+      }
+      else if (template == "zwischentext") {
+        this.zwischentext = data.text;
+        console.log("zwischentext: ", this.zwischentext);
       }
     });
   }

@@ -14,6 +14,8 @@ export class AdminComponent {
 
   public transitionText = "";
 
+  public zwischentext = "";
+
   constructor(private socketService: SocketService) { }
 
   public show() {
@@ -39,6 +41,23 @@ export class AdminComponent {
       template: "countdown",
       data: {
         countdownFinishTime: 0,
+      },
+    });
+  }
+  
+  public showZwischentext() {
+    this.socketService.socket.emit("show", {
+      template: "zwischentext",
+      data: {
+        text: this.zwischentext,
+      },
+    });
+  }
+  public stopZwischentext() {
+    this.socketService.socket.emit("show", {
+      template: "zwischentext",
+      data: {
+        text: "",
       },
     });
   }
