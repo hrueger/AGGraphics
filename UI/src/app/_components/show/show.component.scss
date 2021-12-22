@@ -40,7 +40,9 @@ main {
     width: 50%;
     left: 5%;
     top: 70%;
+    overflow: visible;
     .zwischentext-text {
+        overflow: visible;
         color: #fff;
         font-size: 3rem;
     }
